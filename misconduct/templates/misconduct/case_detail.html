@@ -1,0 +1,29 @@
+{% extends 'misconduct/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+	<h2>{{ object.respondent }}</h2>
+	<p class="lead">{{ object.respondent_position }}</p>
+	<p>{{ object.description }}</p>
+	<p><b>Campus: </b>{{ object.campus }}</p>
+	<p><b>Complaint date: </b>{{ object.complaint_date }}</p>
+	<p><b>Resolution: </b>{{ object.resolution }}</p>
+	<p><b>Still employed by university? </b>{% if object.is_still_employed %}Yes{% else %}No{% endif %}</p>
+
+	<hr>
+
+	<div id="report"></div>
+</div>
+{% endblock %}
+
+{% block extra-css %}
+<style>
+	.pdfobject-container { height: 600px;}
+</style>
+{% endblock %}
+
+{% block extra-js %}
+<script src="{% static 'misconduct/js/pdfobject.min.js' %}"></script>
+<script>PDFObject.embed("/media/{{ object.report }}", "#report");</script>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'misconduct/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+
+<div id="list-wrapper">
+<input class="search form-control" placeholder="Search by name" />
+<br />
+<form id="filter-form" class="form-inline">
+	<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" id="year-dropdown"
+	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	  All years
+	  <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" aria-labelledby="year-dropdown">
+	  <li><a data-year="2015">2015</a></li>
+	  <li><a data-year="2014">2014</a></li>
+	</ul>
+	</div>
+
+	<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
+	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	  All campuses
+	  <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" aria-labelledby="campus-dropdown">
+	  <li><a data-campus="all">All campuses</a></li>
+	  <li><a data-campus="Berkeley">Berkeley</a></li>
+	</ul>
+	</div>
+</form>
+
+<br />
+
+<div class="list">
+{% for case in object_list %}
+<div class="list-item">
+	<h3 class="name"><a href="{% url 'case-detail' case.slug %}">{{ case.respondent }}</a></h3>
+	<h4>{{ case.respondent_position }}</h4> 
+	<p>{{ case.description }}</p>
+	<p><b>Resolution: </b>{{ case.resolution }}</p>
+	<p class="labels"><span data-year='{{ case.complaint_date|date:"Y" }}'>{{ case.complaint_date|date:"N Y" }}</span> &middot; <span class="campus">{{ case.campus }}</span></p>
+</div>
+{% endfor %}
+</div>
+</div>
+
+</div>
+{% endblock %}
+
+{% block extra-css %}
+<style>
+h3 a {
+	color: #000;
+}
+h3 a:hover {
+	color: #000;
+}
+h4 {
+	font-weight: 400;
+}
+.labels {
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: .5px;
+}
+</style>
+{% endblock %}
+
+{% block extra-js %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
+<script type="text/javascript">
+var options = {
+  valueNames: [
+	  'name',
+	  'campus',
+	  { data: ['year'] }
+  ]
+};
+var caseList = new List('list-wrapper', options);
+
+$('.dropdown-menu a').click(function() {
+    $('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
+    var campus = $(this).data('campus');
+    if (campus == 'all') {
+    	caseList.filter();
+    } else {
+    	caseList.filter(function(item) {
+			if (item.values().campus == campus) {
+				return true;
+			} else {
+				return false;
+			}
+    	});
+    }
+});
+
+</script>
+{% endblock %}

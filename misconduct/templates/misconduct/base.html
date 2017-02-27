@@ -1,0 +1,46 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}The Daily Californian{% endblock %}</title>
+    {% block meta %}
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <meta charset="utf-8" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <meta name="keywords" content="{% block keywords %}dailycal, Daily Californian, Daily Cal{% endblock %}" />
+        <link rel='shortcut icon' href='http://www.dailycal.org/assets/uploads/2012/02/favicon.png'/>
+        {% block extra-meta %}{% endblock %}
+    {% endblock %}
+
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'misconduct/css/style.css' %}"/>
+    {% endblock %}
+
+    {% block extra-css %}{% endblock %}
+
+    {% block js %}
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+<body>
+    {% include 'misconduct/navbar.html' %}
+    {% block top %}{% endblock %}
+    {% block container %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% endblock %}
+    <footer class="footer">
+      <div class="container">
+        <p>Questions, comments or corrections? Email <a href="mailto:projects@dailycal.org">projects@dailycal.org</a>. Data and code is open-source on <a href="https://github.com/dailycal-projects">GitHub</a>. <br>
+        Support innovative, independent student journalism. <a href="https://donate.dailycal.org/">Donate today.</a> <br>
+        Copyright © 2016 The Daily Californian, The Independent Berkeley Student Publishing Co., Inc.</p>
+      </div>
+    </footer>
+    {% block extra-js %}{% endblock %}
+</body>
+</html>
