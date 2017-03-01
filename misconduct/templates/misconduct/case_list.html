@@ -3,10 +3,21 @@
 
 {% block content %}
 <div class="col-md-8 col-md-offset-2">
-<h5>Sexual Misconduct</h5>
-<h1>113</h1>
+<h5 id="sexual-misconduct">Sexual Misconduct</h5>
+<div class="separator-top"></div>
+
+<h1 id="number">113</h1>
+
 <p id="info">University of California employees violated sex misconduct policy in the past three years.</p>
+
+<div class="separator-bottom"></div>
+
 <p id="description"> At least 113 University of California faculty, staff and contractors violated UC sexual violence and harassment policy over the past three years at all UC campuses. Among them are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundred of pages of UC documents and contains scans of the original documentation. </p>
+
+<div class="separator-last1"></div>
+<div class="separator-last2"></div>
+
+
 <div id="list-wrapper">
 <input class="search form-control" placeholder="Search by name" />
 <br />
@@ -72,28 +83,78 @@
 
 {% block extra-css %}
 <style>
-h1 {
+#number {
 	text-align: center;
 	margin: auto;
 	font-family: "Times New Roman", Times, serif;
-	font-size: 350px;
+	font-size: 250px;
 	letter-spacing: -30px;
 	margin-bottom: -35px;
 	margin-top: -35px;
-	margin-left: -35px;
+	margin-left: -35px;	
+	font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+	/*font-family: "Helvetica Nueue", Helvetica, Arial, Verdana, sans-serif;*/
+
 }
 
-h5 {
+#sexual-misconduct {
 	text-align: center;
 	font-size: 50px;
-	font-family: "Times New Roman", Times, serif;
+	/*font-family: "Times New Roman", Times, serif;*/
 	font-weight: bold;
+	font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+/*	text-transform: uppercase;
+*//*	letter-spacing: 4px;*/
+	margin-top: 50px;
 
 
 }
 
 #info {
 	text-align: center;
+	margin-bottom: 60px; 
+	font-family: "Helvetica Nueue", Helvetica, Arial, Verdana, sans-serif;
+
+}
+
+.description {
+	font-family: "Helvetica Nueue", Helvetica, Arial, Verdana, sans-serif;
+	margin-top: 70px;
+
+}
+.separator-top {
+	height: 1px;
+	margin: 20px auto;
+	width: 30%;
+	background-color: #aaa;
+	margin-bottom: 50px;
+}
+
+.separator-bottom {
+	height: 1px;
+	margin: 20px auto;
+	width: 30%;
+	background-color: #aaa;
+
+}
+
+.separator-last1 {
+	height: 1px;
+	margin: 10px auto;
+	width: 30%;
+	background-color: #aaa;
+	margin-top: 70px;
+
+}
+
+.separator-last2 {
+	height: 1px;
+	margin: 10px auto;
+	width: 30%;
+	background-color: #aaa;
+	margin-bottom: 70px;
+	margin-top: -5px;
+
 }
 
 .campusbtn {
@@ -122,8 +183,6 @@ h5 {
   display: inline-block;
   left:22%;*/
 }
-
-
 
 .dropdown {
 	display: inline-block;
