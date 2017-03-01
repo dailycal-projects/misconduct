@@ -68,7 +68,7 @@
 <div class="list">
 {% for case in object_list %}
 <div class="list-item">
-	<h3 class="name"><a href="{% url 'case-detail' case.slug %}">{{ case.respondent }}</a></h3>
+	<h3 class="name">{{ case.respondent }}</h3>
 	<h4>{{ case.respondent_position }}</h4> 
 	<p>{{ case.description }}</p>
 	<p><b>Resolution: </b>{{ case.resolution }}</p>
