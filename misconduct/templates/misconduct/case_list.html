@@ -30,6 +30,24 @@
 	</div>
 </form>
 
+<form id="filter-form2" class="form-inline">
+	<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" id="year-dropdown"
+	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	  All years
+	  <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" aria-labelledby="year-dropdown" id="year">
+	  <li><a id="year" data-year="all">All years</a></li>
+	  <li><a id="year" data-year="2015">2015</a></li>
+	  <li><a id="year" data-year="2014">2014</a></li>
+	  <li><a id="year" data-year="2013">2013</a></li>
+	  <li><a id="year" data-year="2012">2012</a></li>
+	  <li><a id="year" data-year="2011">2011</a></li>
+	</ul>	
+	</div>
+</form>
+
 	
 <br />
 
@@ -82,22 +100,41 @@ var options = {
 var caseList = new List('list-wrapper', options);
 
 $('.dropdown-menu li a').click(function() {
-    $('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
-    var campus = $(this).data('campus');
-    if (campus == 'all') {
-    	caseList.filter();
-    } else {
-    	caseList.filter(function(item) {
-			if (item.values().campus == campus) {
-				console.log(campus);
-				return true;
-			} else {
-				return false;
-			}
-    	});
-    }
-
+	if (this.id == "year") {
+		$('#year-dropdown').html($(this).html() + ' <span class="caret"></span>');
+    	var year = $(this).data('year');
+    	console.log(year);
+    	if (year == 'all') {
+    		caseList.filter();
+    	} else {
+    		caseList.filter(function(item) {
+				if (item.values().complaint_date == year) {
+					return true;
+				} else {
+					return false;
+				}
+    		});
+    	}
+	} else {
+		$('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
+		console.log("bart");
+		var campus = $(this).data('campus');
+		if (campus == 'all') {
+			caseList.filter();
+		} else {
+			caseList.filter(function(item) {
+				if (item.values().campus == campus) {
+					console.log(campus);
+					return true;
+				} else {
+					return false;
+				}
+			});
+		}
+	}
 });
+
+
 
 
 
