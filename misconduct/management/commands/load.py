@@ -1,5 +1,6 @@
 import os
 import csv
+from django.utils.text import slugify
 from django.conf import settings
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
@@ -28,12 +29,21 @@ class Command(BaseCommand):
                     complaint_date = None
 
                 case, created = Case.objects.get_or_create(
-                    campus = row['campus'],
-                    respondent = row['respondent'],
-                    complaint_date = complaint_date
+                    identifier = row['pdf_identifier']
                 )
 
+                case.campus = row['campus']
+                case.respondent = row['respondent']
+                case.complaint_date = complaint_date
                 case.description = row['description']
+
+                case.slug = slugify(
+                    '{}-{}-{}'.format(
+                        case.campus,
+                        case.respondent,
+                        case.complaint_date
+                    )
+                )
 
                 if row['respondent_position'] and row['respondent_position'] != '?':
                     case.respondent_position = row['respondent_position']

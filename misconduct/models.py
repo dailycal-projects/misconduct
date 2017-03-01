@@ -20,11 +20,8 @@ class Case(models.Model):
 	is_still_employed = models.NullBooleanField()
 	report = models.FileField(upload_to=report_file_name)
 
-	slug = AutoSlugField(populate_from= lambda instance: '{}-{}-{}'.format(
-		instance.campus,
-		instance.respondent,
-		instance.complaint_date)
-	)
+	identifier = models.CharField(max_length=256)
+	slug = models.SlugField()
 
 	class Meta:
 		ordering = ['-complaint_date']
