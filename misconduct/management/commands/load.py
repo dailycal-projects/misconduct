@@ -23,10 +23,12 @@ class Command(BaseCommand):
                 case = Case(
                     campus = row['campus'],
                     respondent = row['respondent'],
-                    respondent_position = row['respondent_position'],
                     description = row['description'],
                     resolution = row['resolution'],
                 )
+
+                if row['respondent_position'] and  row['respondent_position'] != '?':
+                    case.respondent_position = row['respondent_position']
 
                 if row['complaint_date'] and row['complaint_date'] != '?':
                     case.complaint_date = row['complaint_date']
