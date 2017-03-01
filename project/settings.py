@@ -4,6 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 REPORT_DIR = os.path.join(BASE_DIR, 'reports')
+BUILD_DIR = os.path.join(BASE_DIR, 'build')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -26,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'misconduct'
+    'misconduct',
+    'bakery'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -113,3 +115,9 @@ STATIC_ROOT = 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
+
+# Bakery
+
+BAKERY_VIEWS = (
+    'misconduct.views.CaseListView',
+)
