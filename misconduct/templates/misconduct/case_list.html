@@ -9,9 +9,9 @@
 <br />
 <form id="filter-form" class="form-inline">
 	<div class="dropdown">
-	<button class="btn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
+	<button class="campusbtn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
 	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	  All campuses
+	  CAMPUS
 	  <span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="campus-dropdown">
@@ -32,9 +32,9 @@
 
 <form id="filter-form2" class="form-inline">
 	<div class="dropdown">
-	<button class="btn btn-primary dropdown-toggle" type="button" id="year-dropdown"
+	<button class="datebtn btn-primary dropdown-toggle" type="button" id="year-dropdown"
 	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	  All years
+	  YEARS
 	  <span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="year-dropdown" id="year">
@@ -58,7 +58,7 @@
 	<h4>{{ case.respondent_position }}</h4> 
 	<p>{{ case.description }}</p>
 	<p><b>Resolution: </b>{{ case.resolution }}</p>
-	<p class="labels"><span data-year='{{ case.complaint_date|date:"Y" }}'>{{ case.complaint_date|date:"N Y" }}</span> &middot; <span class="campus">{{ case.campus }}</span></p>
+	<p class="labels"><span class="complaint_date">{{ case.complaint_date|date:"N Y" }}</span> &middot; <span class="campus">{{ case.campus }}</span></p>
 </div>
 {% endfor %}
 </div>
@@ -69,6 +69,30 @@
 
 {% block extra-css %}
 <style>
+.campusbtn {
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: black;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  position: absolute;
+}
+
+.datebtn {
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: black;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  position: relative;
+  left:18%;
+
+}
+
 h3 a {
 	color: #000;
 }
@@ -103,12 +127,12 @@ $('.dropdown-menu li a').click(function() {
 	if (this.id == "year") {
 		$('#year-dropdown').html($(this).html() + ' <span class="caret"></span>');
     	var year = $(this).data('year');
-    	console.log(year);
     	if (year == 'all') {
     		caseList.filter();
     	} else {
     		caseList.filter(function(item) {
-				if (item.values().complaint_date == year) {
+    			var complaint_year = new Date(item.values().complaint_date).getFullYear();
+				if (complaint_year == year) {
 					return true;
 				} else {
 					return false;
@@ -117,7 +141,6 @@ $('.dropdown-menu li a').click(function() {
     	}
 	} else {
 		$('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
-		console.log("bart");
 		var campus = $(this).data('campus');
 		if (campus == 'all') {
 			caseList.filter();
@@ -133,11 +156,6 @@ $('.dropdown-menu li a').click(function() {
 		}
 	}
 });
-
-
-
-
-
 
 
 </script>
