@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="col-md-8 col-md-offset-2">
+<h5>Sexual Misconduct</h5>
 <h1>113</h1>
 <p id="info">University of California employees violated sex misconduct policy in the past three years.</p>
 
@@ -13,7 +14,7 @@
 	<div class="dropdown">
 	<button class="campusbtn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
 	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	  CAMPUS
+	  campus
 	  <span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="campus-dropdown">
@@ -77,41 +78,58 @@ h1 {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 350px;
 	letter-spacing: -30px;
+	margin-bottom: -35px;
+	margin-top: -35px;
+	margin-left: -35px;
+}
+
+h5 {
+	text-align: center;
+	font-size: 50px;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+
+
 }
 
 #info {
-	
+	text-align: center;
 }
 
 .campusbtn {
   background-color: #e7e7e7;
-  border-radius: 5px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   color: black;
   font-size: 15px;
   padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  position: absolute;
+  cursor: pointer;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+
 }
 
 .datebtn {
   background-color: #e7e7e7;
-  border-radius: 5px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   color: black;
   font-size: 15px;
   padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  position: relative;
-  left:18%;
+  /*left:18%;*/
 
+}
+
+.dropdown {
+	display: inline-block;
 }
 
 h3 a {
-	color: #000;
+	/*color: #000;*/
 }
 h3 a:hover {
-	color: #000;
+	/*color: #000;*/
+	opacity: 0.4;
 }
 h4 {
 	font-weight: 400;
