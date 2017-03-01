@@ -22,44 +22,45 @@
 <div id="list-wrapper">
 <input class="search form-control" placeholder="Search by name" />
 <br />
-<form id="filter-form" class="form-inline">
-	<div class="dropdown">
-	<button class="campusbtn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
-	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	  campus
-	  <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" aria-labelledby="campus-dropdown" id="campus-drop">
-	  <li><a data-campus="all">All campuses</a></li>
-	  <li><a data-campus="Berkeley">Berkeley</a></li>
-	  <li><a data-campus="Davis">Davis</a></li>
-	  <li><a data-campus="Irvine">Irvine</a></li>
-	  <li><a data-campus="Los Angeles">Los Angeles</a></li>
-	  <li><a data-campus="Merced">Merced</a></li>
-	  <li><a data-campus="Riverside">Riverside</a></li>
-	  <li><a data-campus="San Diego">San Diego</a></li>
-	  <li><a data-campus="San Francisco">San Francisco</a></li>
-	  <li><a data-campus="Santa Barbara">Santa Barbara</a></li>
-	  <li><a data-campus="Santa Cruz">Santa Cruz</a></li>
-	</ul>	
-	</div>
-</form>
 
-<form id="filter-form2" class="form-inline">
-	<div class="dropdown2">
-	<button class="datebtn btn-primary dropdown-toggle" type="button" id="year-dropdown"
-	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	  YEAR
-	  <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" aria-labelledby="year-dropdown" id="year-drop">
-	  <li><a id="year" data-year="all">All years</a></li>
-	  <li><a id="year" data-year="2015">2015</a></li>
-	  <li><a id="year" data-year="2014">2014</a></li>
-	  <li><a id="year" data-year="2013">2013</a></li>
-	  <li><a id="year" data-year="2012">2012</a></li>
-	  <li><a id="year" data-year="2011">2011</a></li>
-	</ul>	
+<form id="filter-form" class="form-inline">
+	<div class="form-group dropdown">
+		<button class="campusbtn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
+		        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		  campus
+		  <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="campus-dropdown" id="campus-drop">
+		  <li><a data-campus="all">All campuses</a></li>
+		  <li><a data-campus="Berkeley">Berkeley</a></li>
+		  <li><a data-campus="Davis">Davis</a></li>
+		  <li><a data-campus="Irvine">Irvine</a></li>
+		  <li><a data-campus="Los Angeles">Los Angeles</a></li>
+		  <li><a data-campus="Merced">Merced</a></li>
+		  <li><a data-campus="Riverside">Riverside</a></li>
+		  <li><a data-campus="San Diego">San Diego</a></li>
+		  <li><a data-campus="San Francisco">San Francisco</a></li>
+		  <li><a data-campus="Santa Barbara">Santa Barbara</a></li>
+		  <li><a data-campus="Santa Cruz">Santa Cruz</a></li>
+		</ul>	
+	</div>
+
+	&nbsp;
+
+	<div class="form-group dropdown">
+		<button class="datebtn btn-primary dropdown-toggle" type="button" id="year-dropdown"
+		        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		  YEAR
+		  <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="year-dropdown" id="year-drop">
+		  <li><a id="year" data-year="all">All years</a></li>
+		  <li><a id="year" data-year="2015">2015</a></li>
+		  <li><a id="year" data-year="2014">2014</a></li>
+		  <li><a id="year" data-year="2013">2013</a></li>
+		  <li><a id="year" data-year="2012">2012</a></li>
+		  <li><a id="year" data-year="2011">2011</a></li>
+		</ul>	
 	</div>
 </form>
 
@@ -109,17 +110,14 @@
 #info {
 	text-align: center;
 	margin-bottom: 60px; 
-	font-family: "Helvetica Nueue", Helvetica, Arial, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
 	color: #393966;
 }
 
 #description {
-	font-family: "Helvetica Nueue", Helvetica, Arial, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
 	margin-top: 80px;
-		color: #393966;
-
-
-
+	color: #393966;
 }
 .separator-top {
 	height: 2px;
@@ -127,8 +125,6 @@
 	width: 60%;
 	background-color: #393966;
 	margin-bottom: 50px;
-
-
 }
 
 .separator-bottom {
@@ -158,8 +154,6 @@
 }
 
 .campusbtn {
-  margin-left: 0px;
-  margin-top: 1px;
   background-color: #e7e7e7;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   color: black;
@@ -170,45 +164,17 @@
   letter-spacing: 1px;
   text-align: center;
   text-transform: uppercase;
-  position: relative;
-  left: 0px;
   border: none;
-
+  width: 200px;
 }
 
 .datebtn {
-  margin-left: 150px;
-  margin-top: -100px;
   background-color: #e7e7e7;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   color: black;
   font-size: 13px;
   padding: 5px 15px 5px 15px;
-  position: relative;
-  bottom:30px;
-  top: -27px;
   border: none;
-}
-
-.dropdown {
-	display: inline;
-	 position: relative;
-}
-
-.dropdown2 {
-	display: inline-block;
-	position: relative;
-	right: 38px;
-}
-
-#year-drop {
-	margin-left: 150px;
-	margin-top:-20px;
-}
-
-#campus-drop {
-	margin-left: 0px;
-	margin-top:15px;
 }
 
 h3 a {
