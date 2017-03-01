@@ -1,6 +1,9 @@
 {% extends 'misconduct/base.html' %}
 {% load static from staticfiles %}
 
+{% block title %}Sexual Misconduct | The Daily Californian{% endblock %}
+{% block description %}The Daily Californian's database of sexual misconduct cases in the University of California.{% endblock %}
+
 {% block content %}
 <div class="col-md-8 col-md-offset-2">
 
@@ -11,9 +14,7 @@
 
 <p id="info">University of California employees violated sexual misconduct policy in the past three years.</p>
 
-
-<p id="description">Among these are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundred of pages of UC documents and contains scans of the original documentation. </p>
-
+<p id="description">Among these are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundred of pages of UC documents. <a href="http://www.dailycal.org/2017/02/28/its-rampant-documents-reveal-113-uc-employees-violated-sex-misconduct-policy-in-past-3-years/">Related story &raquo;</a></p>
 
 <div class="separator-last1"></div>
 <div class="separator-last2"></div>
@@ -71,7 +72,6 @@
 	<h3 class="name">{{ case.respondent }}</h3>
 	<h4>{{ case.respondent_position }}</h4> 
 	<p>{{ case.description }}</p>
-	<p><b>Resolution: </b>{{ case.resolution }}</p>
 	<p class="labels"><span class="complaint_date">{{ case.complaint_date|date:"N Y" }}</span> &middot; <span class="campus">{{ case.campus }}</span></p>
 </div>
 {% endfor %}
