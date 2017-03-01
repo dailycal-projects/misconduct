@@ -67,7 +67,7 @@
 <div class="list">
 {% for case in object_list %}
 <div class="list-item">
-	<h3 class="name">{{ case.respondent }}</h3>
+	<a href="{% url 'case-detail' case.slug %}"> <h3 class="name">{{ case.respondent }}</h3></a>
 	<h4>{{ case.respondent_position }}</h4> 
 	<p>{{ case.description }}</p>
 	<p class="labels">{% if case.complaint_date %}<span class="complaint_date">{{ case.complaint_date|date:"N Y" }}</span> &middot; {% endif %}<span class="campus">{{ case.campus }}</span></p>

@@ -11,7 +11,8 @@ class Command(BaseCommand):
     help = "Load case information from spreadsheet and link to PDFs."
 
     def handle(self, *args, **options):
-        Case.objects.all().delete()
+
+        # Open the data file
         path = os.path.join(settings.DATA_DIR, 'uc_misconduct.csv')
 
         with open(path, 'r') as infile:
@@ -20,29 +21,29 @@ class Command(BaseCommand):
                 # Skip blank rows
                 if not row['respondent']:
                     continue
-                case = Case(
+
+                if row['complaint_date'] and row['complaint_date'] != '?' and row['complaint_date'] != 'Redacted':
+                    complaint_date = row['complaint_date']
+                else:
+                    complaint_date = None
+
+                case, created = Case.objects.get_or_create(
                     campus = row['campus'],
                     respondent = row['respondent'],
-                    description = row['description'],
-                    resolution = row['resolution'],
+                    complaint_date = complaint_date
                 )
 
-                if row['respondent_position'] and  row['respondent_position'] != '?':
+                case.description = row['description']
+
+                if row['respondent_position'] and row['respondent_position'] != '?':
                     case.respondent_position = row['respondent_position']
-
-                if row['complaint_date'] and row['complaint_date'] != '?':
-                    case.complaint_date = row['complaint_date']
-
-                if row['is_still_employed'] == 'Y':
-                    case.is_still_employed = True
-                elif row['is_still_employed'] == 'N':
-                    case.is_still_employed = False
 
                 case.save()
 
-                # Look for the PDF
-                path = os.path.join(settings.REPORT_DIR, '{}.pdf'.format(case.slug))
-                if os.path.exists(path):
-                    with open(path, 'rb') as f:
-                        case.report = File(f)
-                        case.save()
+                if created:
+                    # Look for the PDF
+                    path = os.path.join(settings.REPORT_DIR, '{}.pdf'.format(row['pdf_identifier']))
+                    if os.path.exists(path):
+                        with open(path, 'rb') as f:
+                            case.report = File(f)
+                            case.save()
