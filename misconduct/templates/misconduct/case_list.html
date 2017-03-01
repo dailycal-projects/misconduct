@@ -88,8 +88,9 @@
   font-size: 15px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-  position: relative;
-  left:18%;
+  position: absolute;
+  display: inline-block;
+  left:22%;
 
 }
 
@@ -122,17 +123,47 @@ var options = {
   ]
 };
 var caseList = new List('list-wrapper', options);
+var oldYear;
+var oldCampus;
 
 $('.dropdown-menu li a').click(function() {
+
+	var year = $(this).data('year');
+	var campus = $(this).data('campus');
+	if (year != null) {
+		oldYear = year;
+	}
+	if (campus != null) {
+		oldCampus = campus;
+	}
+	if (year == null && oldYear == null) {
+		year = 'all';
+		oldYear = 'all'
+	}
+	if (campus == null && oldCampus == null) {
+		campus = 'all';
+		oldCampus = 'all';
+	}
+
 	if (this.id == "year") {
 		$('#year-dropdown').html($(this).html() + ' <span class="caret"></span>');
-    	var year = $(this).data('year');
+
     	if (year == 'all') {
-    		caseList.filter();
+    		caseList.filter(function(item) {
+    			if (oldCampus == 'all') {
+    				return true;
+    			} else if (oldCampus = items.values().campus) {
+    				return true
+    			} else {
+    				return false;
+    			}
+    		});
     	} else {
     		caseList.filter(function(item) {
     			var complaint_year = new Date(item.values().complaint_date).getFullYear();
-				if (complaint_year == year) {
+				if (complaint_year == year && oldCampus =='all') {
+					return true;
+				} else if (complaint_year == year && item.values().campus == oldCampus) {
 					return true;
 				} else {
 					return false;
@@ -141,13 +172,27 @@ $('.dropdown-menu li a').click(function() {
     	}
 	} else {
 		$('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
-		var campus = $(this).data('campus');
+
 		if (campus == 'all') {
-			caseList.filter();
+			caseList.filter(function(item) {
+				var complaint_year = new Date(item.values().complaint_date).getFullYear();
+				console.log(oldYear);
+				if (oldYear == 'all') {
+					console.log("hobo")
+					return true;
+				} else if (oldYear == complaint_year) {
+					console.log("part")
+					return true;
+				} else {
+					return false;
+				}
+			});
 		} else {
 			caseList.filter(function(item) {
-				if (item.values().campus == campus) {
-					console.log(campus);
+				console.log(year);
+				if (item.values().campus == campus && oldYear == 'all') {
+					return true;
+				} else if (item.values().campus == campus && complaint_year == oldYear) {
 					return true;
 				} else {
 					return false;
