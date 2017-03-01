@@ -9,18 +9,6 @@
 <br />
 <form id="filter-form" class="form-inline">
 	<div class="dropdown">
-	<button class="btn btn-primary dropdown-toggle" type="button" id="year-dropdown"
-	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	  All years
-	  <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" aria-labelledby="year-dropdown">
-	  <li><a data-year="2015">2015</a></li>
-	  <li><a data-year="2014">2014</a></li>
-	</ul>
-	</div>
-
-	<div class="dropdown">
 	<button class="btn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
 	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 	  All campuses
@@ -29,10 +17,37 @@
 	<ul class="dropdown-menu" aria-labelledby="campus-dropdown">
 	  <li><a data-campus="all">All campuses</a></li>
 	  <li><a data-campus="Berkeley">Berkeley</a></li>
+	  <li><a data-campus="Davis">Davis</a></li>
+	  <li><a data-campus="Irvine">Irvine</a></li>
+	  <li><a data-campus="Los Angeles">Los Angeles</a></li>
+	  <li><a data-campus="Merced">Merced</a></li>
+	  <li><a data-campus="Riverside">Riverside</a></li>
+	  <li><a data-campus="San Diego">San Diego</a></li>
+	  <li><a data-campus="San Francisco">San Francisco</a></li>
+	  <li><a data-campus="Santa Barbara">Santa Barbara</a></li>
+	  <li><a data-campus="Santa Cruz">Santa Cruz</a></li>
+	</ul>	
+	</div>
+
+	<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" id="year-dropdown"
+	        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	  All years
+	  <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" aria-labelledby="year-dropdown">
+	  <li><a data-year="all">All years</a></li>
+	  <li><a data-year="Berkeley">2015</a></li>
+	  <li><a data-year="Davis">2014</a></li>
+	  <li><a data-year="Irvine">2013</a></li>
+	  <li><a data-year="Los Angeles">2012</a></li>
+	  <li><a data-year="Merced">2011</a></li>
 	</ul>
+	
 	</div>
 </form>
 
+	
 <br />
 
 <div class="list">
@@ -78,26 +93,52 @@ var options = {
   valueNames: [
 	  'name',
 	  'campus',
-	  { data: ['year'] }
+	  'complaint_date'
   ]
 };
 var caseList = new List('list-wrapper', options);
 
-$('.dropdown-menu a').click(function() {
-    $('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
+$('.dropdown-menu li a').click(function() {
+    //$('#campus-dropdown').html($(this).html() + ' <span class="caret"></span>');
+    $('#campus-dropdown').html($(this).html());
     var campus = $(this).data('campus');
     if (campus == 'all') {
     	caseList.filter();
     } else {
     	caseList.filter(function(item) {
 			if (item.values().campus == campus) {
+				console.log(campus);
 				return true;
 			} else {
 				return false;
 			}
     	});
     }
+
 });
+
+$('.dropdown+ .dropdown li a').click(function() {
+    $('#year-dropdown').html($(this).html());
+  
+    var year = $(this).data('complaint_date');
+    console.log(year);
+    if (year == 'all') {
+    	caseList.filter();
+    } else {
+    	caseList.filter(function(item) {
+			if (item.values().complaint_date == year) {
+				console.log(year);
+				return true;
+			} else {
+				return false;
+			}
+    	});
+    }
+
+});
+
+
+
 
 </script>
 {% endblock %}
