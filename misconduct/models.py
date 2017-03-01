@@ -7,7 +7,9 @@ def report_file_name(instance, filename):
     return os.path.join(instance.slug + '.pdf')
 
 class Case(models.Model):
-	"""An individual sexual misconduct case"""
+	"""
+	An individual sexual misconduct case.
+	"""
 	campus = models.CharField(max_length=56)
 	respondent = models.CharField(max_length=256)
 	respondent_position = models.CharField(max_length=256)

@@ -5,25 +5,45 @@
 <head>
     <title>{% block title %}The Daily Californian{% endblock %}</title>
     {% block meta %}
-        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
         <meta charset="utf-8" />
         <meta name="description" content="{% block description %}{% endblock %}" />
         <meta name="keywords" content="{% block keywords %}dailycal, Daily Californian, Daily Cal{% endblock %}" />
         <link rel='shortcut icon' href='http://www.dailycal.org/assets/uploads/2012/02/favicon.png'/>
+        <meta property="article:publisher" content="https://www.facebook.com/dailycal"/>
+        <meta property="fb:admins" content="877855486"/>
+         <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:description" content="The Daily Californian's database of sexual misconduct cases in the University of California."/>
+        <meta name="twitter:title" content="Sexual misconduct database | The Daily Californian"/>
+        <meta name="twitter:site" content="@dailycal"/>
+        <meta name="twitter:domain" content="The Daily Californian"/>
+        <meta name="twitter:image" content="http://i0.wp.com/www.dailycal.org/assets/uploads/2014/04/fbimage1410x738.png"/>
+        <meta name="twitter:creator" content="@dailycal"/>
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Sexual misconduct database | The Daily Californian"/>
+        <meta property="og:url" content="http://projects.dailycal.org/misconduct/"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:description" content="The Daily Californian's database of sexual misconduct cases in the University of California."/>
+        <meta property="og:image" content="http://i0.wp.com/www.dailycal.org/assets/uploads/2014/04/fbimage1410x738.png"/>
+        <meta property="og:image:width" content="1410">
+        <meta property="og:image:height" content="738">
+        <meta property="og:site_name" content="The Daily Californian"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         {% block extra-meta %}{% endblock %}
     {% endblock %}
 
     {% block css %}
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="{% static 'misconduct/css/style.css' %}"/>
     {% endblock %}
 
     {% block extra-css %}{% endblock %}
 
     {% block js %}
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{% static 'misconduct/js/jquery.min.js' %}"></script>
+    <script src="{% static 'misconduct/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'misconduct/js/fa.js' %}"></script>
     {% endblock %}
 </head>
 <body>

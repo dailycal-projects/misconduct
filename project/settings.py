@@ -4,7 +4,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 REPORT_DIR = os.path.join(BASE_DIR, 'reports')
-BUILD_DIR = os.path.join(BASE_DIR, 'build')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -17,11 +16,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -110,7 +107,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/misconduct/static/'
 STATIC_ROOT = 'staticfiles'
 
 MEDIA_URL = '/media/'
@@ -118,6 +115,10 @@ MEDIA_ROOT = 'media'
 
 # Bakery
 
+BUILD_DIR = os.path.join(BASE_DIR, 'build')
 BAKERY_VIEWS = (
     'misconduct.views.CaseListView',
 )
+AWS_BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

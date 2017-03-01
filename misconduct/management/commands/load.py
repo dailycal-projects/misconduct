@@ -1,6 +1,5 @@
 import os
 import csv
-import copytext
 from django.conf import settings
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
@@ -18,7 +17,6 @@ class Command(BaseCommand):
         with open(path, 'r') as infile:
             reader = csv.DictReader(infile)
             for row in reader:
-                print(row)
                 # Skip blank rows
                 if not row['respondent']:
                     continue
