@@ -10,12 +10,14 @@
 
 <h1 id="number">124</h1>
 
-<p id="info">cases of sexual misconduct have involved University of California employees in the past three years.</p>
+<p id="info">cases of sexual misconduct have involved University of California employees in the past three years, according to UC Title IX investigation reports.</p>
 <div class="separator-last2"></div>
 
 <p id="description">Among them are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundreds of pages of UC documents. <a href="http://www.dailycal.org/2017/02/28/its-rampant-documents-reveal-113-uc-employees-violated-sex-misconduct-policy-in-past-3-years/">Related story &raquo;</a></p>
 
+<p id="disclaimer">Note: UC Title IX investigations are not criminal investigations, and their findings are based on a lower standard of proof than in criminal cases.</p>
 
+<div class="separator-last2"></div>
 
 <div id="list-wrapper">
 <input class="search form-control" placeholder="Search by name" />
@@ -69,7 +71,7 @@
 	<h3 class="name">{{ case.respondent }}</h3>
 	<h4>{{ case.respondent_position }}</h4> 
 	<p>{{ case.description }}</p>
-	<p class="labels">{% if case.complaint_date %}<span class="complaint_date">{{ case.complaint_date|date:"N Y" }}</span> &middot; {% endif %}<span class="campus">{{ case.campus }}</span></p>
+	<p class="labels">{% if case.complaint_date %}<span class="complaint_date"> Complaint Date: {{ case.complaint_date|date:"N Y" }}</span> &middot; {% endif %}<span class="campus"> Campus: {{ case.campus }}</span></p>
 </div>
 {% endfor %}
 </div>
@@ -108,6 +110,12 @@
 	font-size: 18px;
 	text-align: center;
 	color: #393966;
+	margin-top: 10px;
+}
+
+#disclaimer {
+	font-size: 12px;
+	margin-bottom: 25px;
 }
 
 #info {
