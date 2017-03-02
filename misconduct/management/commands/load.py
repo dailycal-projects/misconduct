@@ -1,5 +1,6 @@
 import os
 import csv
+from datetime import datetime
 from django.utils.text import slugify
 from django.conf import settings
 from django.core.management import call_command
@@ -12,7 +13,7 @@ class Command(BaseCommand):
     help = "Load case information from spreadsheet and link to PDFs."
 
     def handle(self, *args, **options):
-        
+
         Case.objects.all().delete()
 
         # Open the data file
@@ -25,9 +26,9 @@ class Command(BaseCommand):
                 if not row['respondent']:
                     continue
 
-                if row['complaint_date'] and row['complaint_date'] != '?' and row['complaint_date'] != 'Redacted':
-                    complaint_date = row['complaint_date']
-                else:
+                try:
+                    complaint_date = datetime.strptime(row['complaint_date'], '%Y-%m-%d')
+                except:
                     complaint_date = None
 
                 case, created = Case.objects.get_or_create(
