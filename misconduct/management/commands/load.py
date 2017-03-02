@@ -13,9 +13,6 @@ class Command(BaseCommand):
     help = "Load case information from spreadsheet and link to PDFs."
 
     def handle(self, *args, **options):
-
-        Case.objects.all().delete()
-
         # Open the data file
         path = os.path.join(settings.DATA_DIR, 'uc_misconduct.csv')
 
@@ -44,7 +41,7 @@ class Command(BaseCommand):
                     '{}-{}-{}'.format(
                         case.campus,
                         case.respondent,
-                        case.complaint_date
+                        case.id
                     )
                 )
 
@@ -53,11 +50,10 @@ class Command(BaseCommand):
 
                 case.save()
 
-                """
                 if created:
                     # Look for the PDF
                     path = os.path.join(settings.REPORT_DIR, '{}.pdf'.format(row['pdf_identifier']))
                     if os.path.exists(path):
                         with open(path, 'rb') as f:
                             case.report = File(f)
-                            case.save()"""
+                            case.save()
