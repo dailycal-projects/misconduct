@@ -11,3 +11,8 @@ class CaseListView(BuildableListView):
 
 class CaseDetailView(BuildableDetailView):
 	model = Case
+
+
+class AboutView(BuildableTemplateView):
+	template_name = 'misconduct/about.html'
+	build_path = 'misconduct/about/index.html'
