@@ -4,6 +4,7 @@
 {% block title %}Sexual Misconduct | The Daily Californian{% endblock %}
 
 {% block content %}
+
 <div class="col-md-8 col-md-offset-2">
 
 <h5 id="sexual-misconduct">Sexual Misconduct</h5>
@@ -201,6 +202,7 @@ var options = {
   ]
 };
 var caseList = new List('list-wrapper', options);
+caseList.sort('name', {order: "asc"});
 
 var year = 'All years';
 var campus = 'All campuses';
