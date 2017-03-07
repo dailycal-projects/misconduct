@@ -1,10 +1,6 @@
 import os
 from django.db import models
-from autoslug import AutoSlugField
 
-
-def report_file_name(instance, filename):
-    return os.path.join(instance.slug + '.pdf')
 
 class Case(models.Model):
 	"""
@@ -18,10 +14,13 @@ class Case(models.Model):
 	complaint_date = models.DateField(null=True)
 	staff_or_student = models.CharField(max_length=12)
 	is_still_employed = models.NullBooleanField()
-	report = models.FileField(upload_to=report_file_name)
 
-	identifier = models.CharField(max_length=256)
-	documentcloud_id = models.CharField(max_length=256)
+	identifier = models.CharField(max_length=256, unique=True)
+	documentcloud_id = models.CharField(
+		max_length=256,
+		null=True,
+		blank=True
+	)
 	slug = models.SlugField()
 
 	class Meta:

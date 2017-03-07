@@ -1,12 +1,10 @@
 import os
 import csv
 from datetime import datetime
-from django.utils.text import slugify
 from django.conf import settings
-from django.core.management import call_command
-from django.core.management.base import BaseCommand
+from django.utils.text import slugify
 from misconduct.models import Case
-from django.core.files import File
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
@@ -15,7 +13,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Open the data file
         path = os.path.join(settings.DATA_DIR, 'uc_misconduct.csv')
-
         with open(path, 'r') as infile:
             reader = csv.DictReader(infile)
             for row in reader:
@@ -28,6 +25,7 @@ class Command(BaseCommand):
                 except:
                     complaint_date = None
 
+                # Identifier is unique
                 case, created = Case.objects.get_or_create(
                     identifier = row['pdf_identifier']
                 )
@@ -41,7 +39,7 @@ class Command(BaseCommand):
                     '{}-{}-{}'.format(
                         case.campus,
                         case.respondent,
-                        case.id
+                        row['id']
                     )
                 )
 
@@ -49,11 +47,4 @@ class Command(BaseCommand):
                     case.respondent_position = row['respondent_position']
 
                 case.save()
-
-                if created:
-                    # Look for the PDF
-                    path = os.path.join(settings.REPORT_DIR, '{}.pdf'.format(row['pdf_identifier']))
-                    if os.path.exists(path):
-                        with open(path, 'rb') as f:
-                            case.report = File(f)
-                            case.save()
+                    

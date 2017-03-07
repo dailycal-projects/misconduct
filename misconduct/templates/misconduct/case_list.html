@@ -17,6 +17,14 @@
 
 <p id="disclaimer">Note: UC Title IX investigations are not criminal investigations, and their findings are based on a lower standard of proof than in criminal cases.</p>
 
+<div class="links">
+<li><a href="https://www.facebook.com/sharer/sharer.php?u=projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-facebook"></i></a></li>
+<li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fprojects.dailycal.org%2Fmisconduct&via=dailycal&text=The%20Daily%20Californian%27s%20sexual%20misconduct%20database"><i class="fa fa-lg fa-twitter"></i></a></li>
+<li><a href="mailto:hi@example.com?Subject=Daily%20Californian%20Sexual%20Misconduct%20Database&Body=http%3A//projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-envelope"></i></a></li>
+</div>
+
+<br />
+
 <div class="separator-last2"></div>
 
 <div id="list-wrapper">
@@ -61,7 +69,6 @@
 		</ul>	
 	</div>
 </form>
-
 	
 <br />
 
@@ -82,6 +89,22 @@
 
 {% block extra-css %}
 <style>
+.links {
+	margin: 0 auto;
+	text-align: center;
+}
+.links li {
+	display: inline;
+	margin: 0 10px;
+}
+.links li a {
+	color: #393966;
+	font-size: 16px;
+}
+.links li a:hover {
+	color: #000;
+}
+
 #number {
 	text-align: center;
 	margin: auto;
@@ -145,7 +168,7 @@
 .separator-last2 {
 	height: 1px;
 	margin: 10px auto;
-	width: 30%;
+	width: 50%;
 	background-color: #aaa;
 	margin-bottom: 40px;
 	margin-top: px;
