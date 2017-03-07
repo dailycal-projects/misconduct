@@ -230,9 +230,7 @@ var campus = 'All campuses';
 $('.dropdown-menu li a').click(function() {
 	// Get the year and campus
 	year = $(this).data('year') || year;
-	console.log(year)
 	campus = $(this).data('campus') || campus;
-	console.log(campus)
 	// Update the dropdowns
 	$('#year-dropdown').html(year + ' <span class="caret"></span>');
 	$('#campus-dropdown').html(campus + ' <span class="caret"></span>');
