@@ -21,6 +21,7 @@ class Case(models.Model):
 	report = models.FileField(upload_to=report_file_name)
 
 	identifier = models.CharField(max_length=256)
+	documentcloud_id = models.CharField(max_length=256)
 	slug = models.SlugField()
 
 	class Meta:
