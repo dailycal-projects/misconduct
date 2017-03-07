@@ -118,6 +118,7 @@ MEDIA_ROOT = 'media'
 BUILD_DIR = os.path.join(BASE_DIR, 'build')
 BAKERY_VIEWS = (
     'misconduct.views.CaseListView',
+    'misconduct.views.AboutView',
 )
 AWS_BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')

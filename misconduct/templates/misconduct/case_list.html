@@ -4,6 +4,7 @@
 {% block title %}Sexual Misconduct | The Daily Californian{% endblock %}
 
 {% block content %}
+
 <div class="col-md-8 col-md-offset-2">
 
 <h5 id="sexual-misconduct">Sexual Misconduct</h5>
@@ -11,7 +12,6 @@
 <h1 id="number">124</h1>
 
 <p id="info">cases of sexual misconduct have involved University of California employees in a three-year span, according to UC Title IX investigation reports.</p>
-<div class="separator-last2"></div>
 
 <p id="description">Among them are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundreds of pages of UC documents. <a href="http://www.dailycal.org/2017/02/28/its-rampant-documents-reveal-113-uc-employees-violated-sex-misconduct-policy-in-past-3-years/">Related story &raquo;</a></p>
 
@@ -85,7 +85,6 @@
 #number {
 	text-align: center;
 	margin: auto;
-	font-family: "Times New Roman", Times, serif;
 	font-size: 250px;
 	letter-spacing: -15px;
 	margin-bottom: -35px;
@@ -200,6 +199,7 @@ var options = {
   ]
 };
 var caseList = new List('list-wrapper', options);
+caseList.sort('name', {order: "asc"});
 
 var year = 'All years';
 var campus = 'All campuses';

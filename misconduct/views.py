@@ -14,4 +14,5 @@ class CaseDetailView(BuildableDetailView):
 
 
 class AboutView(BuildableTemplateView):
-	build_path = 'misconduct/about.html'
+	template_name = 'misconduct/about.html'
+	build_path = 'misconduct/about/index.html'

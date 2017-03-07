@@ -20,7 +20,7 @@ class Command(BaseCommand):
             reader = csv.DictReader(infile)
             for row in reader:
                 # Skip blank rows
-                if not row['respondent']:
+                if not row['respondent'] or row['include'] == '0':
                     continue
 
                 try:
