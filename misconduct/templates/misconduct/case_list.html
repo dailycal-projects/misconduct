@@ -5,83 +5,86 @@
 
 {% block content %}
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-2 topper">
 
-<h5 id="sexual-misconduct">Sexual Misconduct</h5>
+	<h5 id="sexual-misconduct">Sexual Misconduct</h5>
 
-<h1 id="number">124</h1>
+	<h1 id="number">{{ object_list|length }}</h1>
 
-<p id="info">cases of sexual misconduct have involved University of California employees in a three-year span, according to UC Title IX investigation reports.</p>
+	<p id="info">cases of sexual misconduct since {{ earliest|date:"F Y" }} have involved University of California employees, according to UC Title IX investigation reports.*</p>
 
-<p id="description">Among them are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundreds of pages of UC documents. <a href="http://www.dailycal.org/2017/02/28/its-rampant-documents-reveal-113-uc-employees-violated-sex-misconduct-policy-in-past-3-years/">Related story &raquo;</a></p>
+	<p id="description">Among them are award-winning scholars, lauded department chairs and highly paid NCAA coaches. This database summarizes information from hundreds of pages of UC documents. <a href="http://www.dailycal.org/2017/02/28/its-rampant-documents-reveal-113-uc-employees-violated-sex-misconduct-policy-in-past-3-years/">Related story &raquo;</a></p>
 
-<p id="disclaimer">Note: UC Title IX investigations are not criminal investigations, and their findings are based on a lower standard of proof than in criminal cases.</p>
+	<p id="disclaimer">*UC Title IX investigations are not criminal investigations, and their findings are based on a lower standard of proof than in criminal cases. This project tracks only incidents reported to the university and disclosed to the public.</p>
 
-<div class="links">
-<li><a href="https://www.facebook.com/sharer/sharer.php?u=projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-facebook"></i></a></li>
-<li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fprojects.dailycal.org%2Fmisconduct&via=dailycal&text=The%20Daily%20Californian%27s%20sexual%20misconduct%20database"><i class="fa fa-lg fa-twitter"></i></a></li>
-<li><a href="mailto:hi@example.com?Subject=Daily%20Californian%20Sexual%20Misconduct%20Database&Body=http%3A//projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-envelope"></i></a></li>
-</div>
+	<div class="links">
+	<li><a href="https://www.facebook.com/sharer/sharer.php?u=projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-facebook"></i></a></li>
+	<li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fprojects.dailycal.org%2Fmisconduct&via=dailycal&text=The%20Daily%20Californian%27s%20sexual%20misconduct%20database"><i class="fa fa-lg fa-twitter"></i></a></li>
+	<li><a href="mailto:hi@example.com?Subject=Daily%20Californian%20Sexual%20Misconduct%20Database&Body=http%3A//projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-envelope"></i></a></li>
+	</div>
 
 <br />
 
 <div class="separator-last2"></div>
 
 <div id="list-wrapper">
-<input class="search form-control" placeholder="Search by name" />
-<br />
+	<input class="search form-control" placeholder="Search by name" />
+	<br />
 
-<form id="filter-form" class="form-inline">
-	<div class="form-group dropdown">
-		<button class="campusbtn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
-		        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		  All campuses
-		  <span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" aria-labelledby="campus-dropdown" id="campus-drop">
-		  <li><a data-campus="All campuses">All campuses</a></li>
-		  <li><a data-campus="Berkeley">Berkeley</a></li>
-		  <li><a data-campus="Davis">Davis</a></li>
-		  <li><a data-campus="Irvine">Irvine</a></li>
-		  <li><a data-campus="Los Angeles">Los Angeles</a></li>
-		  <li><a data-campus="Merced">Merced</a></li>
-		  <li><a data-campus="Riverside">Riverside</a></li>
-		  <li><a data-campus="San Diego">San Diego</a></li>
-		  <li><a data-campus="San Francisco">San Francisco</a></li>
-		  <li><a data-campus="Santa Barbara">Santa Barbara</a></li>
-		  <li><a data-campus="Santa Cruz">Santa Cruz</a></li>
-		</ul>	
+	<form id="filter-form" class="form-inline">
+		<div class="form-group dropdown">
+			<button class="campusbtn btn-primary dropdown-toggle" type="button" id="campus-dropdown"
+			        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			  All campuses
+			  <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="campus-dropdown" id="campus-drop">
+			  <li><a data-campus="All campuses">All campuses</a></li>
+			  <li><a data-campus="Berkeley">Berkeley</a></li>
+			  <li><a data-campus="Davis">Davis</a></li>
+			  <li><a data-campus="Irvine">Irvine</a></li>
+			  <li><a data-campus="Los Angeles">Los Angeles</a></li>
+			  <li><a data-campus="Merced">Merced</a></li>
+			  <li><a data-campus="Riverside">Riverside</a></li>
+			  <li><a data-campus="San Diego">San Diego</a></li>
+			  <li><a data-campus="San Francisco">San Francisco</a></li>
+			  <li><a data-campus="Santa Barbara">Santa Barbara</a></li>
+			  <li><a data-campus="Santa Cruz">Santa Cruz</a></li>
+			</ul>	
+		</div>
+
+		<div class="form-group dropdown">
+			<button class="datebtn btn-primary dropdown-toggle" type="button" id="year-dropdown"
+			        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			  All years
+			  <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="year-dropdown" id="year-drop">
+			  <li><a id="year" data-year="All years">All years</a></li>
+			  <li><a id="year" data-year="2016">2016</a></li>
+			  <li><a id="year" data-year="2015">2015</a></li>
+			  <li><a id="year" data-year="2014">2014</a></li>
+			  <li><a id="year" data-year="2013">2013</a></li>
+			  <li><a id="year" data-year="2012">2012</a></li>
+			</ul>	
+		</div>
+	</form>
+		
+	<br />
+
+	<div class="list">
+
+	{% for case in object_list %}
+	<div class="list-item">
+		<a href=""> <h3 class="respondent">{{ case.respondent }}</h3></a>
+		<h4>{{ case.respondent_position }}</h4> 
+		<p>{{ case.description }}</p>
+		<p class="labels">{% if case.complaint_date %}<span class="complaint_date"> Complaint Date: {{ case.complaint_date|date:"N Y" }}</span> &middot; {% endif %}Campus: <span class="campus">{{ case.campus }}</span></p>
+	</div>
+	{% endfor %}
+	</div>
 	</div>
 
-	<div class="form-group dropdown">
-		<button class="datebtn btn-primary dropdown-toggle" type="button" id="year-dropdown"
-		        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		  All years
-		  <span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" aria-labelledby="year-dropdown" id="year-drop">
-		  <li><a id="year" data-year="All years">All years</a></li>
-		  <li><a id="year" data-year="2016">2016</a></li>
-		  <li><a id="year" data-year="2015">2015</a></li>
-		  <li><a id="year" data-year="2014">2014</a></li>
-		  <li><a id="year" data-year="2013">2013</a></li>
-		  <li><a id="year" data-year="2012">2012</a></li>
-		</ul>	
-	</div>
-</form>
-	
-<br />
-
-<div class="list">
-{% for case in object_list %}
-<div class="list-item">
-	<a href="{% url 'case-detail' case.slug %}"> <h3 class="name">{{ case.respondent }}</h3></a>
-	<h4>{{ case.respondent_position }}</h4> 
-	<p>{{ case.description }}</p>
-	<p class="labels">{% if case.complaint_date %}<span class="complaint_date"> Complaint Date: {{ case.complaint_date|date:"N Y" }}</span> &middot; {% endif %}Campus: <span class="campus">{{ case.campus }}</span></p>
-</div>
-{% endfor %}
-</div>
 </div>
 
 </div>
@@ -89,6 +92,11 @@
 
 {% block extra-css %}
 <style>
+
+.topper {
+	text-align: center;
+}
+
 .links {
 	margin: 0 auto;
 	text-align: center;
@@ -106,7 +114,6 @@
 }
 
 #number {
-	text-align: center;
 	margin: auto;
 	font-size: 250px;
 	letter-spacing: -15px;
@@ -214,15 +221,18 @@ h4 {
 <script src="{% static 'misconduct/js/list.min.js' %}"></script>
 
 <script type="text/javascript">
+
 var options = {
   valueNames: [
-	  'name',
+	  'respondent',
 	  'campus',
 	  'complaint_date'
   ]
 };
+
 var caseList = new List('list-wrapper', options);
-caseList.sort('name', {order: "asc"});
+
+caseList.sort('respondent', {order: "asc"});
 
 var year = 'All years';
 var campus = 'All campuses';

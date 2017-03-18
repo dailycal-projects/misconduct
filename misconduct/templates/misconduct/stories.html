@@ -1,0 +1,15 @@
+{% extends 'misconduct/base.html' %}
+{% load static from staticfiles %}
+
+{% block title %}About | Sexual Misconduct | The Daily Californian{% endblock %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+	<h2>Stories</h2>
+	<ul>
+	{% for story in stories %}
+		<li><h4><a href="{{ story.url }}">{{ story.headline }}</a></h4></li>
+	{% endfor %}
+	</ul>
+</div>
+{% endblock %}

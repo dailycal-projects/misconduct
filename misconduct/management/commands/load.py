@@ -1,5 +1,7 @@
 import os
 import csv
+import copytext
+from xlrd import xldate_as_tuple
 from datetime import datetime
 from django.conf import settings
 from django.utils.text import slugify
@@ -12,39 +14,36 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Open the data file
-        path = os.path.join(settings.DATA_DIR, 'uc_misconduct.csv')
-        with open(path, 'r') as infile:
-            reader = csv.DictReader(infile)
-            for row in reader:
-                # Skip blank rows
-                if not row['respondent'] or row['include'] == '0':
-                    continue
+        path = os.path.join(settings.DATA_DIR, 'uc_misconduct.xlsx')
+        copy = copytext.Copy(path)
 
-                try:
-                    complaint_date = datetime.strptime(row['complaint_date'], '%Y-%m-%d')
-                except:
-                    complaint_date = None
+        for row in copy['complaints']:
+            # Excel date format sucks
+            try:
+                complaint_date = datetime(*xldate_as_tuple(float(row['complaint_date']), 0))
+            except:
+                complaint_date = None
 
-                # Identifier is unique
-                case, created = Case.objects.get_or_create(
-                    identifier = row['pdf_identifier']
+            # Identifier is unique
+            case, created = Case.objects.get_or_create(
+                identifier = row['pdf_identifier']
+            )
+
+            case.campus = row['campus']
+            case.respondent = row['respondent']
+            case.complaint_date = complaint_date
+            case.description = row['description']
+
+            case.slug = slugify(
+                '{}-{}-{}'.format(
+                    case.campus,
+                    case.respondent,
+                    row['id']
                 )
+            )
 
-                case.campus = row['campus']
-                case.respondent = row['respondent']
-                case.complaint_date = complaint_date
-                case.description = row['description']
+            if row['respondent_position'] and row['respondent_position'] != '?':
+                case.respondent_position = row['respondent_position']
 
-                case.slug = slugify(
-                    '{}-{}-{}'.format(
-                        case.campus,
-                        case.respondent,
-                        row['id']
-                    )
-                )
-
-                if row['respondent_position'] and row['respondent_position'] != '?':
-                    case.respondent_position = row['respondent_position']
-
-                case.save()
+            case.save()
                     
