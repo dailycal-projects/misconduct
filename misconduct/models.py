@@ -11,6 +11,7 @@ class Case(models.Model):
 	respondent = models.CharField(max_length=256)
 	respondent_position = models.CharField(max_length=256)
 	description = models.TextField()
+	clarification = models.TextField(null=True)
 	resolution = models.TextField()
 	
 	staff_or_student = models.CharField(max_length=12)

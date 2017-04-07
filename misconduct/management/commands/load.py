@@ -33,6 +33,7 @@ class Command(BaseCommand):
             case.respondent = row['respondent']
             case.complaint_date = complaint_date
             case.description = row['description']
+            case.clarification = row['clarification']
 
             case.slug = slugify(
                 '{}-{}-{}'.format(

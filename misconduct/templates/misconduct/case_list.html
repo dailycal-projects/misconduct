@@ -18,16 +18,17 @@
 	<p id="disclaimer">*UC Title IX investigations are not criminal investigations, and their findings are based on a lower standard of proof than in criminal cases. This project tracks only incidents reported to the university and disclosed to the public.</p>
 
 	<div class="links">
-	<li><a href="https://www.facebook.com/sharer/sharer.php?u=projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-facebook"></i></a></li>
-	<li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fprojects.dailycal.org%2Fmisconduct&via=dailycal&text=The%20Daily%20Californian%27s%20sexual%20misconduct%20database"><i class="fa fa-lg fa-twitter"></i></a></li>
-	<li><a href="mailto:hi@example.com?Subject=Daily%20Californian%20Sexual%20Misconduct%20Database&Body=http%3A//projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-envelope"></i></a></li>
+		<li><a href="https://www.facebook.com/sharer/sharer.php?u=projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-facebook"></i></a></li>
+		<li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fprojects.dailycal.org%2Fmisconduct&via=dailycal&text=The%20Daily%20Californian%27s%20sexual%20misconduct%20database"><i class="fa fa-lg fa-twitter"></i></a></li>
+		<li><a href="mailto:hi@example.com?Subject=Daily%20Californian%20Sexual%20Misconduct%20Database&Body=http%3A//projects.dailycal.org/misconduct/"><i class="fa fa-lg fa-envelope"></i></a></li>
 	</div>
+</div>
 
-<br />
 
-<div class="separator-last2"></div>
 
-<div id="list-wrapper">
+
+<div id="list-wrapper" class="col-md-8 col-md-offset-2">
+	<hr>
 	<input class="search form-control" placeholder="Search by name" />
 	<br />
 
@@ -76,7 +77,7 @@
 
 	{% for case in object_list %}
 	<div class="list-item">
-		<a href=""> <h3 class="respondent">{{ case.respondent }}</h3></a>
+		<a href="{% url 'case-detail' case.slug %}"> <h3 class="respondent">{{ case.respondent }}</h3></a>
 		<h4>{{ case.respondent_position }}</h4> 
 		<p>{{ case.description }}</p>
 		<p class="labels">{% if case.complaint_date %}<span class="complaint_date"> Complaint Date: {{ case.complaint_date|date:"N Y" }}</span> &middot; {% endif %}Campus: <span class="campus">{{ case.campus }}</span></p>
@@ -171,7 +172,6 @@
 	width: 30%;
 }
 
-
 .separator-last2 {
 	height: 1px;
 	margin: 10px auto;
@@ -179,7 +179,6 @@
 	background-color: #aaa;
 	margin-bottom: 40px;
 	margin-top: px;
-
 }
 
 .btn-primary {
