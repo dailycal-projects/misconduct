@@ -6,6 +6,7 @@
 	<h2>{{ object.respondent }}</h2>
 	<p class="lead">{{ object.respondent_position }}</p>
 	<p>{{ object.description }}</p>
+	{% if object.correction %}<p><em>Correction</em>: {{ object.correction }}</p>{% endif %}
 	{% if object.clarification %}<p><em>Clarification</em>: {{ object.clarification }}</p>{% endif %}
 	<p><b>Campus: </b>{{ object.campus }}</p>
 	<p><b>Complaint date: </b>{{ object.complaint_date }}</p>
