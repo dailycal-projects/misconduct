@@ -17,6 +17,9 @@ class Command(BaseCommand):
         path = os.path.join(settings.DATA_DIR, 'uc_misconduct.xlsx')
         copy = copytext.Copy(path)
 
+        # This attribute was added to make sure that extraneous cases which were previously loaded
+        # don't remain in the database. Set false before each loading. 
+        Case.objects.update(include=False)
         for row in copy['complaints']:
             # Excel date format sucks
             try:
@@ -36,6 +39,10 @@ class Command(BaseCommand):
             case.clarification = row['clarification']
             case.correction = row['correction']
 
+            # This attribute was added to make sure that extraneous cases which were previously loaded
+            # don't remain in the database. 
+            case.include = True
+
             case.slug = slugify(
                 '{}-{}-{}'.format(
                     case.campus,
@@ -48,4 +55,9 @@ class Command(BaseCommand):
                 case.respondent_position = row['respondent_position']
 
             case.save()
+
+        # Unneeded cases whose details might have changed but still remain in the database   
+        old_cases = Case.objects.filter(include=False)
+        if old_cases.exists():
+            old_cases._raw_delete(old_cases.db)
                     

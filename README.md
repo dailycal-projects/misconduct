@@ -1,6 +1,6 @@
 # Sexual Misconduct
 The Daily Californian's database of sexual misconduct cases in the University of California
-- `data/uc_misconduct.csv` contains data from the documents released by the UC that have been processed by DC staff
+- `data/uc_misconduct.xlsx` contains data from the documents released by the UC that have been processed by DC staff
 
 ## To run:
 Make sure to have python2.7x installed.
@@ -17,6 +17,7 @@ Make sure to have python2.7x installed.
 
 6. Point your browser to http://localhost:8000/
 
+
 ## To upload to DocumentCloud
 
 Set the environment variables `DOCUMENTCLOUD_USERNAME` and `DOCUMENTCLOUD_PASSWORD`, then run `python manage.py upload_documentcloud`.
@@ -24,3 +25,6 @@ Set the environment variables `DOCUMENTCLOUD_USERNAME` and `DOCUMENTCLOUD_PASSWO
 ## To bake the site into flat files
 
 Run `python manage.py build`.
+
+## Note on formatting of `data/uc_misconduct.xlsx`
+Make sure that there is a `complaints` sheet and `stories` sheet in the spreadsheet. 
