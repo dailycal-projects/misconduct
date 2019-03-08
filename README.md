@@ -15,7 +15,7 @@ Make sure to have python2.7x installed.
 
 5. `python manage.py runserver`
 
-6. Point your browser to http://localhost:8000/
+6. Point your browser to http://localhost:8000/misconduct/
 
 
 ## To upload to DocumentCloud
@@ -26,5 +26,5 @@ Set the environment variables `DOCUMENTCLOUD_USERNAME` and `DOCUMENTCLOUD_PASSWO
 
 Run `python manage.py build`.
 
-## Note on formatting of `data/uc_misconduct.xlsx`
-Make sure that there is a `complaints` sheet and `stories` sheet in the spreadsheet. 
+## Note on data
+Make sure that there is a `complaints` sheet and `stories` sheet in the `data/uc_misconduct.xlsx` spreadsheet. 
