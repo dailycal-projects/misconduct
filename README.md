@@ -26,5 +26,7 @@ Set the environment variables `DOCUMENTCLOUD_USERNAME` and `DOCUMENTCLOUD_PASSWO
 
 Run `python manage.py build`.
 
-## Note on data
+## Notes
 Make sure that there is a `complaints` sheet and `stories` sheet in the `data/uc_misconduct.xlsx` spreadsheet. 
+
+For developers seeking more explanation, go to [this doc](https://docs.google.com/document/d/12LqoAmiYKYJUao8xHzZVa3aOS1OWi_mwYFzkHlZJz1g/edit?usp=sharing). 
