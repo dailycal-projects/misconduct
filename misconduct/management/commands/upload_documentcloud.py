@@ -21,7 +21,9 @@ class Command(BaseCommand):
 
             # Bug: when identifier changes after python manage.py load is run, app still looks for the old identifier, erring out
             path = os.path.join(settings.REPORT_DIR, '{}.pdf'.format(case.identifier))
+            print(path)
             if os.path.exists(path): 
+                print("uploading ", path, case.slug)
                 obj = client.documents.upload(
                     path,
                     title=case.slug,
@@ -30,6 +32,7 @@ class Command(BaseCommand):
                 )
 
                 case.documentcloud_id = obj.id
+                print(obj.id)
                 case.save()
 
                 project.document_list.append(obj)

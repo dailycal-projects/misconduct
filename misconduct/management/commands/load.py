@@ -38,6 +38,8 @@ class Command(BaseCommand):
             case.description = row['description']
             case.clarification = row['clarification']
             case.correction = row['correction']
+            # Default none, to be forgiving towards incorrectly named pdfs in pdf_identifier column (e.g. 170080_UCDID.pdf)
+            case.documentcloud_id = None
 
             # This attribute was added to make sure that extraneous cases which were previously loaded
             # don't remain in the database. 
@@ -50,6 +52,7 @@ class Command(BaseCommand):
                     row['id']
                 )
             )
+            print(case.slug)
 
             if row['respondent_position'] and row['respondent_position'] != '?':
                 case.respondent_position = row['respondent_position']
