@@ -26,6 +26,10 @@ Set the environment variables `DOCUMENTCLOUD_USERNAME` and `DOCUMENTCLOUD_PASSWO
 
 Run `python manage.py build`.
 
+## To deploy to AWS
+
+Run `python manage.py publish --no-delete` (`--no-delete` flag is added to preserve all other files in the same bucket such as projects.dailycal.org, while also updating the misconduct files.)
+
 ## Notes
 Make sure that there is a `complaints` sheet and `stories` sheet in the `data/uc_misconduct.xlsx` spreadsheet. 
 
